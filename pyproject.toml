@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "ygsq"
+version = "0.1.0"
+description = ""
+authors = ["seth.hg <seth.hg@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/seth-hg/ygsq"
+repository = "https://github.com/seth-hg/ygsq"
+keywords = [
+    "LLM",
+    "AIGC",
+    "Chinese",
+    "Ernie",
+    "ChatGLM",
+]
+
+[tool.poetry.scripts]
+ygsq-chat = "ygsq.chat.__main__:main"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+dashscope = "^1.10.0"
+zhipuai = "^1.0.7"
+websockets = "^11.0.3"
+streamlit = "^1.27.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
