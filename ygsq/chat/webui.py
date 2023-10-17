@@ -1,6 +1,7 @@
 import json
 from typing import Dict
-import time
+from datetime import datetime
+
 
 import streamlit as st
 
@@ -132,18 +133,20 @@ if len(st.session_state.history) > 0:
     with col_download:
         st.download_button(
             "保存",
-            file_name="",
-            data=json.dumps(st.session_state.history, indent=2),
+            file_name=datetime.now().strftime("%Y%m%d_%H%M%S.json"),
+            data=json.dumps(st.session_state.history, indent=2, ensure_ascii=False),
             use_container_width=True,
         )
     with col_clear:
         if st.button("清除", use_container_width=True):
             st.session_state.history = []
-            st.experimental_rerun()
+            st.rerun()
 
 
 def slow_echo(prompt: str):
     """debug only"""
+    import time
+
     prompt = prompt.upper() + " !!!"
     for c in prompt:
         time.sleep(0.1)
